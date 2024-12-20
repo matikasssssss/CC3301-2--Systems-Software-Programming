@@ -1,0 +1,36 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -DSANITIZE -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-palin.c palin.c test-util.c -lm -o palin.bin-san
+./palin.bin-san
+Tests unitarios
+Aprobado
+Tests masivos
+Tiempo de cpu usado por su version: 5 milisegundos
+Aprobado
+Felicitaciones: aprobo los tests de este modo de ejecucion
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-palin.c palin.c test-util.c -lm -o palin.bin-g
+./palin.bin-g
+Tests unitarios
+Aprobado
+Tests masivos
+Tiempo de cpu usado por su version: 5 milisegundos
+Aprobado
+Felicitaciones: aprobo los tests de este modo de ejecucion
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-palin.c palin.c test-util.c -lm -o palin.bin
+Midiendo cuanto demora la solucion del profesor
+rm -f tiempo-ref.txt
+chmod +x prof.ref-x86_64
+./prof.ref-x86_64 ref > /dev/null
+Tiempos de referencia =  2419
+Verificando y comparando con su solucion
+./palin.bin 2419
+Tests unitarios
+Aprobado
+Benchmarks
+Tiempo de cpu usado por su version: 2727 milisegundos
+Porcentaje de sobrecosto: 12 %
+Aprobado
+Felicitaciones: aprobo los tests de este modo de ejecucion
