@@ -1,0 +1,92 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-prod.c prod.c BigInt.c -lm -o prod.bin-san
+./prod.bin-san
+Test: factorial de numeros pequenos con 2 a 17 threads
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+
+Aprobado
+--------------
+Test: speed up
+Intento: 1
+Calculando factorial de 10000 secuencialmente.
+En mi computador Ryzen 3550H se demoro hasta medio minuto.
+Tiempo=139 milisegundos, cifras hexadecimales=29615
+Calculando en paralelo con 4 threads
+En mi computador el speed up rondaba 1.4 con 2 cores
+Llamada secuencial con i=7500 j=9999
+Llamada secuencial con i=2500 j=4999
+Llamada secuencial con i=0 j=2499
+Llamada secuencial con i=5000 j=7499
+Tiempo=150 milisegundos, speed up=0.926667
+Felicitaciones: aprobo este modo de ejecucion
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-prod.c prod.c BigInt.c -lm -o prod.bin-g
+./prod.bin-g
+Test: factorial de numeros pequenos con 2 a 17 threads
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+
+Aprobado
+--------------
+Test: speed up
+Intento: 1
+Calculando factorial de 40000 secuencialmente.
+En mi computador Ryzen 3550H se demoro hasta medio minuto.
+Tiempo=693 milisegundos, cifras hexadecimales=138453
+Calculando en paralelo con 4 threads
+En mi computador el speed up rondaba 1.4 con 2 cores
+Llamada secuencial con i=30000 j=39999
+Llamada secuencial con i=10000 j=19999
+Llamada secuencial con i=20000 j=29999
+Llamada secuencial con i=0 j=9999
+Tiempo=459 milisegundos, speed up=1.509804
+Felicitaciones: aprobo este modo de ejecucion
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-prod.c prod.c BigInt.c -lm -o prod.bin
+./prod.bin
+Test: factorial de numeros pequenos con 2 a 17 threads
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+
+Aprobado
+--------------
+Test: speed up
+Intento: 1
+Calculando factorial de 700000 secuencialmente.
+En mi computador Ryzen 3550H se demoro hasta medio minuto.
+Tiempo=40599 milisegundos, cifras hexadecimales=3145506
+Calculando en paralelo con 4 threads
+En mi computador el speed up rondaba 1.4 con 2 cores
+Llamada secuencial con i=525000 j=699999
+Llamada secuencial con i=175000 j=349999
+Llamada secuencial con i=0 j=174999
+Llamada secuencial con i=350000 j=524999
+Tiempo=26848 milisegundos, speed up=1.512180
+Felicitaciones: aprobo este modo de ejecucion
