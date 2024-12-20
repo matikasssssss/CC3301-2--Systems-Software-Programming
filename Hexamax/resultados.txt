@@ -1,0 +1,78 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== make sort-c-hexamax.run ====
+/opt/riscv/bin/riscv64-unknown-elf-gcc -g -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 sort-c-hexamax.c -o sort-c-hexamax.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -g -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 test-sort.c -o test-sort.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 -g sort-c-hexamax.o test-sort.o  -o sort-c-hexamax
+qemu-riscv32 sort-c-hexamax
+Multiples tests con arreglos de solo 2 numeros
+Aprobado
+Ahora un arreglo de 12 numeros
+El arreglo desordenado es:
+--------------------------
+0x00000013
+0x0abcdcba
+0x53771628
+0x00000000
+0xa8765432
+0x00f00000
+0x00024521
+0x00000001
+0xb0334714
+0x93648200
+0x0000000c
+0xe0000000
+
+El arreglo ordenado es:
+-----------------------
+0x00f00000
+0xe0000000
+0x0abcdcba
+0x0000000c
+0xb0334714
+0xa8765432
+0x93648200
+0x53771628
+0x00024521
+0x00000013
+0x00000001
+0x00000000
+Felicitaciones: todos los tests aprobados
+==== make sort-rv-hexamax.run ====
+/opt/riscv/bin/riscv64-unknown-elf-gcc -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 sort-rv-hexamax.s -o sort-rv-hexamax.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -g -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 test-sort.c -o test-sort.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 -g sort-rv-hexamax.o test-sort.o  -o sort-rv-hexamax
+qemu-riscv32 sort-rv-hexamax
+Multiples tests con arreglos de solo 2 numeros
+Aprobado
+Ahora un arreglo de 12 numeros
+El arreglo desordenado es:
+--------------------------
+0x00000013
+0x0abcdcba
+0x53771628
+0x00000000
+0xa8765432
+0x00f00000
+0x00024521
+0x00000001
+0xb0334714
+0x93648200
+0x0000000c
+0xe0000000
+
+El arreglo ordenado es:
+-----------------------
+0x00f00000
+0xe0000000
+0x0abcdcba
+0x0000000c
+0xb0334714
+0xa8765432
+0x93648200
+0x53771628
+0x00024521
+0x00000013
+0x00000001
+0x00000000
+Felicitaciones: todos los tests aprobados
