@@ -1,0 +1,206 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -pedantic -std=c18 -Wno-unused-function  definir.c -lm -o definir.bin-san
+bash test-definir.sh definir.bin-san
+-----------------------------------------------------------
+Tests unitarios
+Creando def.dicc como un diccionario vacio
+Ejecutando: ./definir.bin-san def.dicc embarcacion "todo tipo de artilugio capaz de navegar en el agua"
+Ejecutando: ./definir.bin-san def.dicc casa "edificacion construida para ser habitada"
+Ejecutando: ./definir.bin-san def.dicc lluvia "precipitacion de particulas liquidas de agua"
+Ejecutando: ./definir.bin-san def.dicc alimento "sustancia ingerida por un ser vivo"
+Ejecutando: ./definir.bin-san def.dicc celular "aparato portatil de un sistema de telefonia celular"
+Ejecutando: ./definir.bin-san def.dicc canario "ave paseriforme de la familia de los fringilidos"
+Ejecutando: ./definir.bin-san def.dicc palacio "edificio utilizado como residencia de un magnate"
+Ejecutando: ./definir.bin-san def.dicc bolsillo "bolsa pequena"
+Ejecutando: ./definir.bin-san def.dicc correr "andar tan rapidamente que los pies quedan en el aire"
+Ejecutando: ./definir.bin-san def.dicc nadar "trasladarse en el agua, con los brazos y sin tocar el suelo"
+Ejecutando: ./definir.bin-san def.dicc posada "establecimiento economico de hospedaje para viajeros"
+Ejecutando: ./definir.bin-san def.dicc taladro "herramienta aguda o cortante con que se agujerea la madera"
+Ejecutando: ./definir.bin-san def.dicc perro "mamifero domestico con olfato muy fino, inteligente y leal"
+Ejecutando: ./definir.bin-san def.dicc techo "parte superior de un edificio que lo cubre y cierra"
+-----------------------------------------------------------
+Test con llave existente
+Ejecutando: ./definir.bin-san def.dicc alimento "sustancia ingerida por un ser vivo"
+Llave existente: no se puede modificar la llave alimento
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc correr "andar tan rapidamente que los pies quedan en el aire"
+Llave existente: no se puede modificar la llave correr
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc nadar "trasladarse en el agua, con los brazos y sin tocar el suelo"
+Llave existente: no se puede modificar la llave nadar
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc posada "establecimiento economico de hospedaje para viajeros"
+Llave existente: no se puede modificar la llave posada
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc taladro "herramienta aguda o cortante con que se agujerea la madera"
+Llave existente: no se puede modificar la llave taladro
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc perro "mamifero domestico con olfato muy fino, inteligente y leal"
+Llave existente: no se puede modificar la llave perro
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc techo "parte superior de un edificio que lo cubre y cierra"
+Llave existente: no se puede modificar la llave techo
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con un diccionario inexistente
+Ejecutando: ./definir.bin-san nodef.dicc bolsillo "bla bla"
+nodef.dicc: No such file or directory
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con diccionario sin permiso de escritura
+Ejecutando: ./definir.bin-san /tmp/def.dicc evangelio "bla bla"
+/tmp/def.dicc: Permission denied
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test de uso incorrecto de parametros
+Ejecutando: ./definir.bin-san def.dicc def.dicc "bolsa pequena" error
+uso: ./definir <archivo> <llave> <definicion>
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-san def.dicc  ""
+uso: ./definir <archivo> <llave> <definicion>
+Bien.  Se diagnostico correctamente el error.
+
+Felicitaciones: aprobo todos los tests
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -std=c18 -Wno-unused-function  definir.c -lm -o definir.bin-g
+bash test-definir.sh definir.bin-g
+-----------------------------------------------------------
+Tests unitarios
+Creando def.dicc como un diccionario vacio
+Ejecutando: ./definir.bin-g def.dicc embarcacion "todo tipo de artilugio capaz de navegar en el agua"
+Ejecutando: ./definir.bin-g def.dicc casa "edificacion construida para ser habitada"
+Ejecutando: ./definir.bin-g def.dicc lluvia "precipitacion de particulas liquidas de agua"
+Ejecutando: ./definir.bin-g def.dicc alimento "sustancia ingerida por un ser vivo"
+Ejecutando: ./definir.bin-g def.dicc celular "aparato portatil de un sistema de telefonia celular"
+Ejecutando: ./definir.bin-g def.dicc canario "ave paseriforme de la familia de los fringilidos"
+Ejecutando: ./definir.bin-g def.dicc palacio "edificio utilizado como residencia de un magnate"
+Ejecutando: ./definir.bin-g def.dicc bolsillo "bolsa pequena"
+Ejecutando: ./definir.bin-g def.dicc correr "andar tan rapidamente que los pies quedan en el aire"
+Ejecutando: ./definir.bin-g def.dicc nadar "trasladarse en el agua, con los brazos y sin tocar el suelo"
+Ejecutando: ./definir.bin-g def.dicc posada "establecimiento economico de hospedaje para viajeros"
+Ejecutando: ./definir.bin-g def.dicc taladro "herramienta aguda o cortante con que se agujerea la madera"
+Ejecutando: ./definir.bin-g def.dicc perro "mamifero domestico con olfato muy fino, inteligente y leal"
+Ejecutando: ./definir.bin-g def.dicc techo "parte superior de un edificio que lo cubre y cierra"
+-----------------------------------------------------------
+Test con llave existente
+Ejecutando: ./definir.bin-g def.dicc alimento "sustancia ingerida por un ser vivo"
+Llave existente: no se puede modificar la llave alimento
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc correr "andar tan rapidamente que los pies quedan en el aire"
+Llave existente: no se puede modificar la llave correr
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc nadar "trasladarse en el agua, con los brazos y sin tocar el suelo"
+Llave existente: no se puede modificar la llave nadar
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc posada "establecimiento economico de hospedaje para viajeros"
+Llave existente: no se puede modificar la llave posada
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc taladro "herramienta aguda o cortante con que se agujerea la madera"
+Llave existente: no se puede modificar la llave taladro
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc perro "mamifero domestico con olfato muy fino, inteligente y leal"
+Llave existente: no se puede modificar la llave perro
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc techo "parte superior de un edificio que lo cubre y cierra"
+Llave existente: no se puede modificar la llave techo
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con un diccionario inexistente
+Ejecutando: ./definir.bin-g nodef.dicc bolsillo "bla bla"
+nodef.dicc: No such file or directory
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con diccionario sin permiso de escritura
+Ejecutando: ./definir.bin-g /tmp/def.dicc evangelio "bla bla"
+/tmp/def.dicc: Permission denied
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test de uso incorrecto de parametros
+Ejecutando: ./definir.bin-g def.dicc def.dicc "bolsa pequena" error
+uso: ./definir <archivo> <llave> <definicion>
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin-g def.dicc  ""
+uso: ./definir <archivo> <llave> <definicion>
+Bien.  Se diagnostico correctamente el error.
+
+Felicitaciones: aprobo todos los tests
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  definir.c -lm -o definir.bin
+bash test-definir.sh definir.bin
+-----------------------------------------------------------
+Tests unitarios
+Creando def.dicc como un diccionario vacio
+Ejecutando: ./definir.bin def.dicc embarcacion "todo tipo de artilugio capaz de navegar en el agua"
+Ejecutando: ./definir.bin def.dicc casa "edificacion construida para ser habitada"
+Ejecutando: ./definir.bin def.dicc lluvia "precipitacion de particulas liquidas de agua"
+Ejecutando: ./definir.bin def.dicc alimento "sustancia ingerida por un ser vivo"
+Ejecutando: ./definir.bin def.dicc celular "aparato portatil de un sistema de telefonia celular"
+Ejecutando: ./definir.bin def.dicc canario "ave paseriforme de la familia de los fringilidos"
+Ejecutando: ./definir.bin def.dicc palacio "edificio utilizado como residencia de un magnate"
+Ejecutando: ./definir.bin def.dicc bolsillo "bolsa pequena"
+Ejecutando: ./definir.bin def.dicc correr "andar tan rapidamente que los pies quedan en el aire"
+Ejecutando: ./definir.bin def.dicc nadar "trasladarse en el agua, con los brazos y sin tocar el suelo"
+Ejecutando: ./definir.bin def.dicc posada "establecimiento economico de hospedaje para viajeros"
+Ejecutando: ./definir.bin def.dicc taladro "herramienta aguda o cortante con que se agujerea la madera"
+Ejecutando: ./definir.bin def.dicc perro "mamifero domestico con olfato muy fino, inteligente y leal"
+Ejecutando: ./definir.bin def.dicc techo "parte superior de un edificio que lo cubre y cierra"
+-----------------------------------------------------------
+Test con llave existente
+Ejecutando: ./definir.bin def.dicc alimento "sustancia ingerida por un ser vivo"
+Llave existente: no se puede modificar la llave alimento
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc correr "andar tan rapidamente que los pies quedan en el aire"
+Llave existente: no se puede modificar la llave correr
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc nadar "trasladarse en el agua, con los brazos y sin tocar el suelo"
+Llave existente: no se puede modificar la llave nadar
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc posada "establecimiento economico de hospedaje para viajeros"
+Llave existente: no se puede modificar la llave posada
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc taladro "herramienta aguda o cortante con que se agujerea la madera"
+Llave existente: no se puede modificar la llave taladro
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc perro "mamifero domestico con olfato muy fino, inteligente y leal"
+Llave existente: no se puede modificar la llave perro
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc techo "parte superior de un edificio que lo cubre y cierra"
+Llave existente: no se puede modificar la llave techo
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con un diccionario inexistente
+Ejecutando: ./definir.bin nodef.dicc bolsillo "bla bla"
+nodef.dicc: No such file or directory
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con diccionario sin permiso de escritura
+Ejecutando: ./definir.bin /tmp/def.dicc evangelio "bla bla"
+/tmp/def.dicc: Permission denied
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test de uso incorrecto de parametros
+Ejecutando: ./definir.bin def.dicc def.dicc "bolsa pequena" error
+uso: ./definir <archivo> <llave> <definicion>
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./definir.bin def.dicc  ""
+uso: ./definir <archivo> <llave> <definicion>
+Bien.  Se diagnostico correctamente el error.
+
+Felicitaciones: aprobo todos los tests
+make --no-print-directory PROB=bench bench.bin
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  bench.c -lm -o bench.bin
+./bench.bin ./prof.ref-x86_64 ./definir.bin
+
+--------------------------------------------------
+Test de eficiencia
+
+Construyendo diccionario de 10000 definiciones
+Intento= 1
+Midiendo tiempo del binario del profesor con 10000 busquedas
+Tiempo= 13490 milisegundos
+Midiendo tiempo de su solucion con 10000 busquedas
+Tiempo= 13050 milisegundos
+Porcentaje de sobrecosto: -3 %
+Felicitaciones: Aprobo el test de eficiencia
